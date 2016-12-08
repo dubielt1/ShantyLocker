@@ -7,7 +7,7 @@ Many image obscuring options have been added.
 ### Blur and Swirl
 ![blur and swirl](http://i666.photobucket.com/albums/vv27/tres_dubiel1/b6s720_zpstpsc53wn.png)
 
-### Blur and Swirl --root
+### Swirl --root
 ![blur and swirl desktop](http://i666.photobucket.com/albums/vv27/tres_dubiel1/i3sd_zpsvzf1vd4r.png)
 
 ### Blur
