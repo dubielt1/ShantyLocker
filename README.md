@@ -4,16 +4,16 @@ A 'spirtual' extension of ![xwobf](https://github.com/glindste/xwobf), this prog
 take a screenshot of your desktop and obscure only all visible windows, or obscure the entire desktop as a whole.
 Many image obscuring options have been added.
 
-Blur and Swirl
+### Blur and Swirl
 ![blur and swirl](http://i666.photobucket.com/albums/vv27/tres_dubiel1/b6s720_zpstpsc53wn.png)
 
-Blur and Swirl --root
+### Blur and Swirl --root
 ![blur and swirl desktop](http://i666.photobucket.com/albums/vv27/tres_dubiel1/i3sd_zpsvzf1vd4r.png)
 
-Blur
+### Blur
 ![blur](http://i666.photobucket.com/albums/vv27/tres_dubiel1/b7_zpshnrbzwad.png)
 
-Spread and Shade --alt-image
+### Spread and Shade --alt-image
 ![spread, shade and alt-image](http://i666.photobucket.com/albums/vv27/tres_dubiel1/jetlocker_zpslfsp37cw.png)
 
 ### Usage
@@ -50,8 +50,3 @@ i3lock -i /tmp/lock.png
 ### License
 
 Unlicense
-
-
-Here is an example original Image ![](http://i666.photobucket.com/albums/vv27/tres_dubiel1/Optimized-DOC010-000_zpsfslowpk0.jpg)
-
-Here is the image with isolated columns ![](http://i666.photobucket.com/albums/vv27/tres_dubiel1/result_zpsovgd2s5y.png)
