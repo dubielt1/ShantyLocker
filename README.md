@@ -31,7 +31,7 @@ All options have default values
     -S --shade [value]
     -s --swirl [degrees]             Swirl the image from the center by [degrees]
     -p --spread [amount]             Spread pixels randomly within image by [amount]
-    -i --implode [factor]            Implode image by [factor]
+    -i --implode [factor]            Implode image by [factor] 
     -w --wave [amplitude]            Must use with --alt-image for best effect
 ```
 
