@@ -45,6 +45,41 @@ shantylock  -S -p -o/tmp/lock.png
 i3lock -i/tmp/lock.png
 ```
 
+### Install
+
+```
+git clone https://github.com/dubielt1/ShantyLocker
+cd ShantyLocker
+cmake .
+make -j4
+sudo make install
+```
+
+or
+
+```
+git clone https://github.com/dubielt1/ShantyLocker
+cd ShantyLocker
+mkdir build && cd $_
+cmake ..
+make -j4
+sudo make install
+```
+
+### Uninstall
+
+```
+cd ShantyLocker
+sudo make uninstall
+```
+
+or
+
+```
+cd ShantyLocker/build
+sudo make uninstall
+```
+
 ### Credit
 
 ![xwobf](https://github.com/glindste/xwobf)
