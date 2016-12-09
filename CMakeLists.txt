@@ -4,12 +4,20 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set(CMAKE_INSTALL_PREFIX "/usr/local/")
 
 
-find_package(ImageMagick COMPONENTS Magick++)
+find_package(ImageMagick COMPONENTS Magick++ MagickCore)
 find_package(XCB REQUIRED)
 find_package(XCB-UTIL REQUIRED)
 find_package(XCB-EWMH REQUIRED)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall")
+# Fix IM warning about HDRI_ENABLE and MAGICKCORE_QUANTUM_DEPTH
+find_program(MAGICK_CONFIG "Magick++-config")
+# Ask about CXX and lib flags/locations
+execute_process(COMMAND "${MAGICK_CONFIG}" "--cxxflags" OUTPUT_VARIABLE MAGICK_CXX_FLAGS)
+# Remove trailing whitespace (CMAKE warns about this)
+string(STRIP "${MAGICK_CXX_FLAGS}" MAGICK_CXX_FLAGS)
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall ${MAGICK_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS_NONE "${CMAKE_CXX_FLAGS} -O3")
 
 set(SOURCE_FILES main.cpp xcbutil/xcbutil.cpp obscure/obscure.cpp)
