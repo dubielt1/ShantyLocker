@@ -167,8 +167,8 @@ int main(int argc, char** argv) {
   execute_operations(visible_windows, operations, params, base);
 
   // Add a display flag?
-   base.display();
-  //base.write(path);
+  // base.display();
+  base.write(path);
   TerminateMagick();
   xcb_disconnect(connection);
   return 0;
