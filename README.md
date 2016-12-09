@@ -50,7 +50,7 @@ i3lock -i/tmp/lock.png
 ```
 git clone https://github.com/dubielt1/ShantyLocker
 cd ShantyLocker
-cmake .
+cmake -DCMAKE_BUILD_TYPE=Release .
 make -j4
 sudo make install
 ```
@@ -61,7 +61,7 @@ or
 git clone https://github.com/dubielt1/ShantyLocker
 cd ShantyLocker
 mkdir build && cd $_
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j4
 sudo make install
 ```
