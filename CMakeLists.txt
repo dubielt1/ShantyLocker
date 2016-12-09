@@ -9,7 +9,8 @@ find_package(XCB REQUIRED)
 find_package(XCB-UTIL REQUIRED)
 find_package(XCB-EWMH REQUIRED)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall")
+set(CMAKE_CXX_FLAGS_NONE "${CMAKE_CXX_FLAGS} -O3")
 
 set(SOURCE_FILES main.cpp xcbutil/xcbutil.cpp obscure/obscure.cpp)
 add_executable(ShantyLocker ${SOURCE_FILES})
