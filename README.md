@@ -1,8 +1,10 @@
 # shanty lock
 
 A 'spirtual' extension of ![xwobf](https://github.com/glindste/xwobf), this program can either:
-take a screenshot of your desktop and obscure only all visible windows, or obscure the entire desktop as a whole.
+take a screenshot of your desktop and obscure only all visible windows, or obscure the desktop as a whole.
 Many image obscuring options have been added.
+
+Must be used in conjunction with a screen locking program
 
 ### Blur and Swirl
 ![blur and swirl](http://i666.photobucket.com/albums/vv27/tres_dubiel1/b6s720_zpstpsc53wn.png)
@@ -31,7 +33,7 @@ All options have default values
     -S --shade [value]
     -s --swirl [degrees]             Swirl the image from the center by [degrees]
     -p --spread [amount]             Spread pixels randomly within image by [amount]
-    -i --implode [factor]            Implode image by [factor] 
+    -i --implode [factor]            Implode image by [factor]
     -w --wave [amplitude]            Must use with --alt-image for best effect
 ```
 
@@ -40,7 +42,7 @@ All options have default values
 ```
 #!/bin/bash
 shantylock  -S -p -o/tmp/lock.png
-i3lock -i /tmp/lock.png
+i3lock -i/tmp/lock.png
 ```
 
 ### Credit
