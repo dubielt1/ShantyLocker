@@ -23,7 +23,7 @@ static void help() {
        << "Show help" << endl;
   cout << "    -m --alt-image [path]            "
        << "Use image at [path] as background to transpose obfuscated windows "
-          "onto. Can be used with --root"
+          "onto. Can't be used with --root"
        << endl;
   cout << "    -o --output [path]               "
        << "Save resulting lock screen image to path" << endl;
