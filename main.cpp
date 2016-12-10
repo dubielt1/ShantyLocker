@@ -202,7 +202,8 @@ int main(int argc, char** argv) {
   // Either fill visible_windows, or insert root window
   vector<unique_ptr<rectangle_t>> visible_windows;
   if (desktop) {
-    visible_windows.push_back(make_unique<rectangle_t>(0, 0, screen->width_in_pixels,
+    visible_windows.push_back(make_unique<rectangle_t>(0, 0,
+                                                       screen->width_in_pixels,
                                                        screen->height_in_pixels));
   }
   else {
