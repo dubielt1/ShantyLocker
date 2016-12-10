@@ -117,7 +117,7 @@ int main(int argc, char** argv) {
             rad = stod(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --blur. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(blur);
         params.push_back(rad);
         break;
@@ -127,7 +127,7 @@ int main(int argc, char** argv) {
           shade_factor = stod(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --shade. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(shade);
         params.push_back(shade_factor);
         break;
@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
             swirl_factor = stod(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --swirl. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(swirl);
         params.push_back(swirl_factor);
         break;
@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
             spread_factor = (size_t)stoi(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --spread. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(spread);
         params.push_back(spread_factor);
         break;
@@ -155,7 +155,7 @@ int main(int argc, char** argv) {
             implode_factor = stod(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --implode. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(implode);
         params.push_back(implode_factor);
         break;
