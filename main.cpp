@@ -63,6 +63,7 @@ int main(int argc, char** argv) {
   double amp = 5;
   bool desktop = false;
 
+  // Default destination image to x:root
   Image base("x:root");
 
   string alt_image;
@@ -155,19 +156,23 @@ int main(int argc, char** argv) {
 
   xcb_screen_t* screen = iter.data;
 
+  vector<unique_ptr<rectangle_t>> visible_windows;
   if (desktop) {
-    execute_desktop_only(operations, params, base);
+    visible_windows.push_back(make_unique<rectangle_t>(0, 0, screen->width_in_pixels,
+                                                       screen->height_in_pixels));
+    execute_operations(visible_windows, operations, params, base);
+    //base.display();
+    base.write(path);
     TerminateMagick();
     xcb_disconnect(connection);
     return 0;
   }
 
-  vector<unique_ptr<rectangle_t>> visible_windows;
   get_visible_windows(connection, screen, visible_windows);
   execute_operations(visible_windows, operations, params, base);
 
   // Add a display flag?
-  // base.display();
+  //base.display();
   base.write(path);
   TerminateMagick();
   xcb_disconnect(connection);
