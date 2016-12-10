@@ -149,26 +149,20 @@ int main(int argc, char** argv) {
   // 1st parameter takes display name. If NULL, uses DISPLAY env
   xcb_connection_t* connection = xcb_connect(NULL, &screens);
 
-  /* Get the first screen */
-
+  // Get the first screen
   const xcb_setup_t* setup = xcb_get_setup(connection);
   xcb_screen_iterator_t iter = xcb_setup_roots_iterator(setup);
-
   xcb_screen_t* screen = iter.data;
 
   vector<unique_ptr<rectangle_t>> visible_windows;
   if (desktop) {
     visible_windows.push_back(make_unique<rectangle_t>(0, 0, screen->width_in_pixels,
                                                        screen->height_in_pixels));
-    execute_operations(visible_windows, operations, params, base);
-    //base.display();
-    base.write(path);
-    TerminateMagick();
-    xcb_disconnect(connection);
-    return 0;
+  }
+  else {
+      get_visible_windows(connection, screen, visible_windows);
   }
 
-  get_visible_windows(connection, screen, visible_windows);
   execute_operations(visible_windows, operations, params, base);
 
   // Add a display flag?
