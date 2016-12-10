@@ -89,11 +89,20 @@ int main(int argc, char** argv) {
 
       case 'm':
         alt_image = string(optarg);
+        if (alt_image[0] == '-') {
+            cerr << "Argument required for -m or --root option" << endl;
+            throw new invalid_argument("Argument required for -m or --root option");
+        }
         base = Image(alt_image);
         break;
 
       case 'o':
         path = string(optarg);
+        if (path[0] == '-') {
+            cerr << "Argument required for -o or --output option" << endl;
+            throw new invalid_argument("Argument required for -o or --output option");
+        }
+        break;
 
       case 'd':
         desktop = true;
@@ -104,35 +113,59 @@ int main(int argc, char** argv) {
         break;
 
       case 'b':
-        rad = optarg ? stod(string(optarg)) : rad;
+        try {
+            rad = stod(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --blur. Using default..." << endl;
+        }
         operations.push_back(blur);
         params.push_back(rad);
         break;
 
       case 'S':
-        shade_factor = optarg ? stod(string(optarg)) : shade_factor;
+        try {
+          shade_factor = stod(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --shade. Using default..." << endl;
+        }
         operations.push_back(shade);
         params.push_back(shade_factor);
         break;
 
       case 's':
-        swirl_factor = optarg ? stod(string(optarg)) : swirl_factor;
+        try {
+            swirl_factor = stod(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --swirl. Using default..." << endl;
+        }
         operations.push_back(swirl);
         params.push_back(swirl_factor);
         break;
       case 'p':
-        spread_factor = optarg ? (size_t)stoi(string(optarg)) : spread_factor;
+        try {
+            spread_factor = (size_t)stoi(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --spread. Using default..." << endl;
+        }
         operations.push_back(spread);
         params.push_back(spread_factor);
         break;
       case 'i':
-        implode_factor = optarg ? stod(string(optarg)) : implode_factor;
+        try {
+            implode_factor = stod(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --implode. Using default..." << endl;
+        }
         operations.push_back(implode);
         params.push_back(implode_factor);
         break;
 
       case 'w':
-        amp = optarg ? stod(string(optarg)) : amp;
+        try {
+            amp = stod(string(optarg));
+        } catch (const invalid_argument& e) {
+            cerr << "Invalid option to --wave. Using default..." << endl;
+        }
         operations.push_back(wave);
         params.push_back(amp);
         break;
@@ -141,12 +174,15 @@ int main(int argc, char** argv) {
         help();
         return 1;
       default:
-        if (optopt == 'c')
-          fprintf(stderr, "Option -%c requires an argument.\n", optopt);
-        else if (isprint(optopt))
-          fprintf(stderr, "Unknown option -%c.\n", optopt);
-        else
-          fprintf(stderr, "Unknown option character '\\x%x'.\n", optopt);
+        if (optopt == 'c') {
+            fprintf(stderr, "Option -%c requires an argument.\n", optopt);
+        }
+        else if (isprint(optopt)) {
+            fprintf(stderr, "Unknown option -%c.\n", optopt);
+        }
+        else {
+            fprintf(stderr, "Unknown option character '\\x%x'.\n", optopt);
+        }
         return 1;
     }
   }
