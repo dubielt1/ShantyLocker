@@ -9,6 +9,7 @@ static const struct option opts[] = {{"help", no_argument, 0, 'h'},
                                      {"alt-image", required_argument, 0, 'm'},
                                      {"output", required_argument, 0, 'o'},
                                      {"root", no_argument, 0, 'd'},
+                                     {"display", no_argument, 0, 'D'},
                                      {"blur", optional_argument, 0, 'b'},
                                      {"shade", optional_argument, 0, 'S'},
                                      {"swirl", optional_argument, 0, 's'},
@@ -30,6 +31,9 @@ static void help() {
   cout << "    -d --root                        "
        << "Obfuscate the desktop as one window, instead of each visible window "
           "individually"
+       << endl;
+  cout << "    -D --display                     "
+          "Display the generated image for fast option tweaking"
        << endl;
   cout << "  Obfuscation methodologies:         (built-in functions provided "
           "by ImageMagick)"
@@ -62,6 +66,7 @@ int main(int argc, char** argv) {
   double implode_factor = 50;
   double amp = 5;
   bool desktop = false;
+  bool display = false;
 
   // Default destination image to x:root
   Image base("x:root");
@@ -75,7 +80,7 @@ int main(int argc, char** argv) {
   int optidx;
   int c;
 
-  while ((c = getopt_long(argc, argv, "hm:o:db::S::s::p::i::w::", opts,
+  while ((c = getopt_long(argc, argv, "hm:o:dDb::S::s::p::i::w::", opts,
                           &optidx)) != -1) {
     switch (c) {
       case 'h':
@@ -92,6 +97,10 @@ int main(int argc, char** argv) {
 
       case 'd':
         desktop = true;
+        break;
+
+      case 'D':
+        display = true;
         break;
 
       case 'b':
@@ -154,6 +163,7 @@ int main(int argc, char** argv) {
   xcb_screen_iterator_t iter = xcb_setup_roots_iterator(setup);
   xcb_screen_t* screen = iter.data;
 
+  // Either fill visible_windows, or insert root window
   vector<unique_ptr<rectangle_t>> visible_windows;
   if (desktop) {
     visible_windows.push_back(make_unique<rectangle_t>(0, 0, screen->width_in_pixels,
@@ -162,11 +172,12 @@ int main(int argc, char** argv) {
   else {
       get_visible_windows(connection, screen, visible_windows);
   }
-
   execute_operations(visible_windows, operations, params, base);
 
-  // Add a display flag?
-  //base.display();
+  if (display) {
+      base.display();
+  }
+
   base.write(path);
   TerminateMagick();
   xcb_disconnect(connection);

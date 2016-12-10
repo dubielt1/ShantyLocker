@@ -28,6 +28,7 @@ All options have default values
     -m --alt-image [path]            Use image at [path] as background to transpose obfuscated windows onto. Can't be used with --root
     -o --output [path]               Save resulting lock screen image to path
     -d --root                        Obfuscate the desktop as one window, instead of each visible window individually
+    -D --display                     Display the generated image for fast option tweaking
   Obfuscation methodologies:         (built-in functions provided by ImageMagick)
     -b --blur [radius]               Blurs image. [radius] specifies the radius of the Gaussian
     -S --shade [value]
