@@ -7,14 +7,9 @@
 
 #include "xcbutil.h"
 
-/* Applies operations to children of the root window, individually */
+/* Applies operations to appropriate windows */
 void execute_operations(
     const std::vector<std::unique_ptr<rectangle_t>>& rects,
-    const std::vector<std::function<void(Magick::Image&, double)>> operations,
-    const std::vector<double> params, Magick::Image& lock_screen);
-
-/* Applies operations to the desktop as a single window */
-void execute_desktop_only(
     const std::vector<std::function<void(Magick::Image&, double)>> operations,
     const std::vector<double> params, Magick::Image& lock_screen);
 

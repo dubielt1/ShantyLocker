@@ -4,7 +4,7 @@
 
 #include"obscure.h"
 
-/* Applies operations to children of the root window, individually */
+/* Applies operations to appropriate windows */
 void execute_operations(
     const std::vector<std::unique_ptr<rectangle_t>>& rects,
     const std::vector<std::function<void(Magick::Image&, double)>> operations,
@@ -34,6 +34,7 @@ void execute_operations(
 
     // xneg and yneg tell Magick that negative coordinates are used: x = 1919 = -1
     //                                                               y = 1079 = -1
+    //                                                          For a 1920x1080 display
     Magick::Geometry g(width, height, x, y, xneg, yneg);
     Magick::Image rect(source);
     rect.crop(g);
@@ -46,19 +47,6 @@ void execute_operations(
       (*function_iter)(rect, *param_iter);
     }
     lock_screen.composite(rect, x, y, Magick::OverCompositeOp);
-  }
-}
-
-/* Applies operations to the desktop as a single window */
-void execute_desktop_only(
-    const std::vector<std::function<void(Magick::Image&, double)>> operations,
-    const std::vector<double> params, Magick::Image& lock_screen) {
-
-  // here lock_screen is always equal to 'x:root'
-  auto function_iter = operations.begin();
-  auto param_iter = params.begin();
-  for (; function_iter != operations.end(); function_iter++, param_iter++) {
-    (*function_iter)(lock_screen, *param_iter);
   }
 }
 
