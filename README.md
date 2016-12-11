@@ -29,7 +29,7 @@ All options have default values
     -o --output [path]               Save resulting lock screen image to path
     -d --root                        Obfuscate the desktop as one window, instead of each visible window individually
     -D --display                     Display the generated image for fast option tweaking
-  Obfuscation methodologies:         (built-in functions provided by ImageMagick)
+  Obscuring methodologies:           (built-in functions provided by ImageMagick)
     -b --blur [radius]               Blurs image. [radius] specifies the radius of the Gaussian
     -S --shade [value]
     -s --swirl [degrees]             Swirl the image from the center by [degrees]
