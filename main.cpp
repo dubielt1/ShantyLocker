@@ -16,6 +16,7 @@ static const struct option opts[] = {{"help", no_argument, 0, 'h'},
                                      {"spread", optional_argument, 0, 'p'},
                                      {"implode", optional_argument, 0, 'i'},
                                      {"wave", optional_argument, 0, 'w'},
+                                     {"xwobf", optional_argument, 0, 'x'},
                                      {0, 0, 0, 0}};
 
 static void help() {
@@ -52,6 +53,8 @@ static void help() {
        << endl;
   cout << "    -w --wave [amplitude]            Must use with --alt-image for best effect"
        << endl;
+  cout << "    -x --xwobf [size]                Same effect as xwobf"
+       << endl;
 }
 
 int main(int argc, char** argv) {
@@ -65,6 +68,7 @@ int main(int argc, char** argv) {
   size_t spread_factor = 12;
   double implode_factor = 50;
   double amp = 5;
+  int xwobf_factor = 5;
   bool desktop = false;
   bool display = false;
 
@@ -80,7 +84,7 @@ int main(int argc, char** argv) {
   int optidx;
   int c;
 
-  while ((c = getopt_long(argc, argv, "hm:o:dDb::S::s::p::i::w::", opts,
+  while ((c = getopt_long(argc, argv, "hm:o:dDb::S::s::p::i::w::x::", opts,
                           &optidx)) != -1) {
     switch (c) {
       case 'h':
@@ -165,9 +169,19 @@ int main(int argc, char** argv) {
             amp = stod(string(optarg));
         } catch (const invalid_argument& e) {
             cerr << "Invalid option to --wave. Using default..." << endl;
-        }
+        } catch (const logic_error& e) {}
         operations.push_back(wave);
         params.push_back(amp);
+        break;
+
+      case 'x':
+        try {
+          xwobf_factor = stoi(string(optarg));
+        } catch (const invalid_argument& e) {
+          cerr << "Invalid option to --xwobf. Using default..." << endl;
+        } catch (const logic_error& e) {}
+        operations.push_back(xwobf);
+        params.push_back(xwobf_factor);
         break;
 
       case '?':

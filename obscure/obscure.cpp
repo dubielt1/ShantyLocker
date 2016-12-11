@@ -68,3 +68,10 @@ void wave(Magick::Image& rect, const double amplitude) {
   rect.backgroundColor("none");
   rect.wave(amplitude, length);
 }
+
+void xwobf(Magick::Image& rect, const int size) {
+  rect.filterType(Magick::PointFilter);
+  Magick::Geometry g = rect.size();
+  rect.resize(Magick::Geometry(g.width() / size, g.height() / size));
+  rect.resize(g);
+}

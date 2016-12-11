@@ -25,4 +25,6 @@ void implode(Magick::Image& rect, const double implode = 20);
 
 void wave(Magick::Image& rect, const double amplitude = 5);
 
+void xwobf(Magick::Image& rect, const int size);
+
 #endif //SHANTYLOCKER_OBSCURE_H

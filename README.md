@@ -36,6 +36,7 @@ All options have default values
     -p --spread [amount]             Spread pixels randomly within image by [amount]
     -i --implode [factor]            Implode image by [factor]
     -w --wave [amplitude]            Must use with --alt-image for best effect
+    -x --xwobf [size]                Same effect as xwobf
 ```
 
 ### Example using i3lock
