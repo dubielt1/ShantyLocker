@@ -51,7 +51,8 @@ static void help() {
        << endl;
   cout << "    -i --implode [factor]            Implode image by [factor]"
        << endl;
-  cout << "    -w --wave [amplitude]            Must use with --alt-image for best effect"
+  cout << "    -w --wave [amplitude]            Must use with --alt-image "
+          "for best effect"
        << endl;
   cout << "    -x --xwobf [size]                Same effect as xwobf"
        << endl;
