@@ -6,17 +6,17 @@ Many image obscuring options have been added.
 
 Must be used in conjunction with a screen locking program
 
-### Wave and Blur using --alt-image
-![wave and blur](http://i666.photobucket.com/albums/vv27/tres_dubiel1/w_b_zpskampi1c2.png)
+### Wave and Blur
+![wave and blur](https://user-images.githubusercontent.com/11619193/30526316-78bc986a-9bde-11e7-8ee4-7692c272cff2.PNG)
 
 ### Swirl --root
-![blur and swirl desktop](http://i666.photobucket.com/albums/vv27/tres_dubiel1/i3sd_zpsvzf1vd4r.png)
+![swirl desktop](https://user-images.githubusercontent.com/11619193/30526318-78bdacb4-9bde-11e7-80a4-d7b8f6e3d08e.PNG)
 
 ### xwobf
-![xwobf](http://i666.photobucket.com/albums/vv27/tres_dubiel1/x_zpsi35wupar.png)
+![xwobf](https://user-images.githubusercontent.com/11619193/30526319-78bedb5c-9bde-11e7-8aed-014157da7e42.PNG)
 
 ### Spread and Shade --alt-image
-![spread, shade and alt-image](http://i666.photobucket.com/albums/vv27/tres_dubiel1/jetlocker_zpslfsp37cw.png)
+![spread, shade and alt-image](https://user-images.githubusercontent.com/11619193/30526321-78beeca0-9bde-11e7-9aa5-4a505d505e93.PNG)
 
 ### Usage
 
