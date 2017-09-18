@@ -88,4 +88,4 @@ sudo make uninstall
 
 ### License
 
-Unlicense
+MIT License
